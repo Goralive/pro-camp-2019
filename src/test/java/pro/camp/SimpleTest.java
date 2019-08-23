@@ -4,12 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.HasCapabilities;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.*;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class SimpleTest {
 
@@ -17,11 +13,8 @@ public class SimpleTest {
 
     @Before
     public void startBrowser() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions opt = new ChromeOptions();
-        //opt.setHeadless(true);
-        opt.addArguments("start-fullscreen");
-        driver = new ChromeDriver(opt);
+        WebDriverManager.edgedriver().setup();
+        driver = new EdgeDriver();
     }
 
     @After
