@@ -1,4 +1,4 @@
-package pro.camp.session2;
+package pro.camp.sessions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -9,7 +9,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.List;
 
-public class SessionExamples {
+public class CookiesJSExecutor {
 
     WebDriver drv1,drv2;
 
