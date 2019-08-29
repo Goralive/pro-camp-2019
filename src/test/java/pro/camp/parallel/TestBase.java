@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -18,6 +19,7 @@ public class TestBase {
 
     @Before
     public void start() throws MalformedURLException {
+        WebDriverManager.firefoxdriver().setup();
         WebDriverManager.chromedriver().setup();
 
         if (tlDriver.get() != null) {
@@ -26,7 +28,10 @@ public class TestBase {
             return;
         }
 
-        driver = new ChromeDriver();
+        ChromeOptions opt = new ChromeOptions();
+        opt.setExperimentalOption("w3c",false);
+
+        driver = new ChromeDriver(opt);
         wait = new WebDriverWait(driver,10);
 
         tlDriver.set(driver);
@@ -41,7 +46,8 @@ public class TestBase {
     public String getTestURL() {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("test.html").getFile());
-        return file.getAbsolutePath().toString();
+        return "file:///"+
+                file.getAbsolutePath().toString();
     }
 
 }
